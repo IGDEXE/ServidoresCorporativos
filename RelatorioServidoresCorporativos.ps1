@@ -23,8 +23,8 @@ Import-Module $moduloDicionario -Force # Carrega o modulo
 
 # Faz as analises dos servidores
 try {
-    # Recebe os computadores de uma lista
-    $servidores = get-content $listaServidores
+    # Escreve o corpo do E-mail
+    $servidores = get-content $listaServidores # Recebe os computadores de uma lista
     $CorpoEmail = "<h3>Servidores Corporativos</h3>"
     $CorpoEmail += "<table>"
     $CorpoEmail += "    <tr>"
@@ -32,7 +32,7 @@ try {
     $CorpoEmail += "        <td class='colorn'>Disponibilidade</td>"
     $CorpoEmail += "    </tr>"
     foreach ($servidor in $servidores) {
-        $nome = Dicionario-IPs $servidor
+        $nome = Dicionario-IPs $servidor # Traduz o IP em um nome de exibicao
         $CorpoEmail += "    <tr>"
         $CorpoEmail += "        <td class='colorn'>$nome</td>"
         $Return = $ping.send("$servidor")
